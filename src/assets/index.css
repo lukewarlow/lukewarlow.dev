@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        text-underline-offset: 0.2em;
+    }
+}
+
+@layer utilities {
+    .decoration-thick {
+        text-decoration-thickness: 0.15em;
+    }
+}
+
+img[data-hidden] {
+    display: none;
+}
+
+horizontal-scroller {
+    display: block;
+}
+:focus-visible {
+    outline-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    :focus-visible {
+        outline-color: white;
+    }
+}
