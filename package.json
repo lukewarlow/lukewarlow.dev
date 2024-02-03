@@ -16,17 +16,16 @@
     "wc-horizontal-scroller": "0.5.0"
   },
   "devDependencies": {
+    "caniuse-lite": "^1.0.30001582",
     "lightningcss": "^1.22.1",
+    "puppeteer": "^21.7.0",
     "tailwind-mq": "^0.3.0",
     "tailwind-scrollbar-utilities": "0.1.0",
     "vite": "^5.1.0-beta.6",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-pwa": "^0.17.5",
-    "caniuse-lite": "^1.0.30001582",
-    "magic-string": "^0.30.5",
-    "node-html-parser": "^6.1.12",
-    "puppeteer": "^21.7.0"
+    "vite-prerender-plugin": "^0.1.1"
   },
   "browserslist": [
     "last 2 chrome versions",
