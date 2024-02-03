@@ -2,7 +2,7 @@ import viteCompression from 'vite-plugin-compression';
 import {createHtmlPlugin} from 'vite-plugin-html';
 import {VitePWA} from 'vite-plugin-pwa';
 import {defineConfig} from 'vite';
-import { PrerenderPlugin} from "./prerender-plugin.js";
+import {PrerenderPlugin} from 'vite-prerender-plugin';
 // import puppeteer from 'puppeteer';
 // import { setTimeout } from 'timers/promises';
 
