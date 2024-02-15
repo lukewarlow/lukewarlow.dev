@@ -1,33 +1,37 @@
-import './register-wc.js';
+import HorizontalScroller from 'wc-horizontal-scroller';
 
-if (!('trustedTypes' in window)) {
-    window.trustedTypes={createPolicy:(_, options) => options};
-}
+window.customElements.define('horizontal-scroller', HorizontalScroller);
 
-const noopPolicy = window.trustedTypes.createPolicy('no-op', {
-    createScriptURL: (input) => input
+window.addEventListener('scrollerfullscreenenter', () => {
+    document.body.style.overflowY = 'hidden';
 });
 
-/**
- * If no service worker is installed yet, we wait for it to be installed
- * and then reload the page
- *
- * Further updates are taken care of by the update script, because the
- * user will never see this index.html again
- */
-if ('serviceWorker' in navigator) {
-    try {
-        const registration = await navigator.serviceWorker?.register(noopPolicy.createScriptURL('/sw.js'), {type: "module"});
-        console.log('Service worker registered successfully', registration);
+window.addEventListener('scrollerfullscreenexit', () => {
+    document.body.style.overflowY = 'visible';
+});
 
-        if (!navigator.serviceWorker.controller) {
-            navigator.serviceWorker.addEventListener('message', (event) => {
-                if (event?.data?.type === 'SW_ACTIVATED') {
-                    window.location.reload();
-                }
-            });
-        }
-    } catch (err) {
-        console.log('Service worker registration failed: ', err);
+if ('preferences' in navigator) {
+    window.settingsBtn.parentElement.classList.remove('hidden');
+    window.colorSchemeSwitch.value = navigator.preferences.colorScheme.override ?? '';
+    window.contrastSwitch.value = navigator.preferences.contrast.override ?? '';
+    window.motionSwitch.value = navigator.preferences.reducedMotion.override ?? '';
+    window.transparencySwitch.value = navigator.preferences.reducedTransparency.override ?? '';
+    window.settingsBtn.onclick = () => {
+        window.settingsDialog.showModal();
+        window.settingsBtn.setAttribute('aria-expanded', 'true');
+    }
+    window.settingsDialog.onclose = () => {
+        window.settingsBtn.setAttribute('aria-expanded', 'false');
+    }
+    window.settingsForm.onreset = () => {
+        window.settingsDialog.close();
+    }
+    window.settingsForm.onsubmit = async (e) => {
+        e.preventDefault();
+        await navigator.preferences.colorScheme.requestOverride(window.colorSchemeSwitch.value);
+        await navigator.preferences.contrast.requestOverride(window.contrastSwitch.value);
+        await navigator.preferences.reducedMotion.requestOverride(window.motionSwitch.value);
+        await navigator.preferences.reducedTransparency.requestOverride(window.transparencySwitch.value);
+        window.settingsDialog.close();
     }
 }

@@ -1,6 +1,5 @@
 import viteCompression from 'vite-plugin-compression';
 import {createHtmlPlugin} from 'vite-plugin-html';
-import {VitePWA} from 'vite-plugin-pwa';
 import {defineConfig} from 'vite';
 import { PrerenderPlugin} from "./prerender-plugin.js";
 // import puppeteer from 'puppeteer';
@@ -16,18 +15,7 @@ export default defineConfig({
         createHtmlPlugin({
             minify: true,
         }),
-        VitePWA({
-            srcDir: './',
-            filename: 'sw.js',
-            injectRegister: false,
-            manifest: false,
-            strategies: 'injectManifest',
-            injectManifest: {
-                injectionPoint: null,
-            },
-            minify: false
-        }),
-        PrerenderPlugin(),
+        PrerenderPlugin({renderTarget: '#app'}),
         // (function() {
         //     return {
         //         name: "dsd",
@@ -59,6 +47,13 @@ export default defineConfig({
             polyfill: false,
         },
         target: 'esnext',
-        assetsInlineLimit: 0
+        assetsInlineLimit: 0,
+        rollupOptions: {
+            input: {
+                client: "src/client.js",
+                server: "src/server.js",
+                'index.html': "index.html",
+            },
+        },
     },
 });

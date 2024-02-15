@@ -1368,9 +1368,6 @@ export function Html(serviceWorker = true) {
                     -
                     <time>2024</time> &copy; Luke Warlow
                 </p>
-                <p class="text-white">
-                    Rendered ${serviceWorker ? 'by the service worker' : 'server-side'}
-                </p>
             </footer>
         </div>
     `;

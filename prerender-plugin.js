@@ -244,6 +244,8 @@ export function PrerenderPlugin({ prerenderScript, renderTarget, additionalPrere
                         ? "`renderTarget` was not specified in plugin options and <body> does not exist in input HTML template"
                         : `Unable to detect prerender renderTarget "${result.selector}" in input HTML template`);
                 target.insertAdjacentHTML("afterbegin", body);
+
+                bundle[prerenderEntry.fileName].code = '';
                 // Add generated HTML to compilation:
                 if (route.url === "/")
                     bundle["index.html"].source = htmlDoc.toString();
