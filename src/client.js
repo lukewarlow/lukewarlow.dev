@@ -16,6 +16,15 @@ if ('preferences' in navigator) {
     window.contrastSwitch.value = navigator.preferences.contrast.override ?? '';
     window.motionSwitch.value = navigator.preferences.reducedMotion.override ?? '';
     window.transparencySwitch.value = navigator.preferences.reducedTransparency.override ?? '';
+    if (!navigator.preferences.contrast.validValues.includes('no-preference')) {
+        window.contrastSwitch.querySelector('option[value="no-preference"]').remove();
+    }
+    if (!navigator.preferences.reducedMotion.validValues.includes('no-preference')) {
+        window.motionSwitch.querySelector('option[value="no-preference"]').remove();
+    }
+    if (!navigator.preferences.reducedTransparency.validValues.includes('no-preference')) {
+        window.transparencySwitch.querySelector('option[value="no-preference"]').remove();
+    }
     window.settingsBtn.onclick = () => {
         window.settingsDialog.showModal();
         window.settingsBtn.setAttribute('aria-expanded', 'true');

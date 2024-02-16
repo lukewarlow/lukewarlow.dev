@@ -58,6 +58,7 @@ export function Html(serviceWorker = true) {
                                 class="dark:bg-gray-700 p-1 border border-gray-300 contrast-more:border-black dark:border-none contrast-more:dark:border-solid contrast-more:dark:border-white">
                             <option value="">System</option>
                             <option value="more">More</option>
+                            <option value="no-preference">No Preference</option>
                         </select>
                     </div>
                     <div class="flex flex-col gap-2">
@@ -66,6 +67,7 @@ export function Html(serviceWorker = true) {
                                 class="dark:bg-gray-700 p-1 border border-gray-300 contrast-more:border-black dark:border-none contrast-more:dark:border-solid contrast-more:dark:border-white">
                             <option value="">System</option>
                             <option value="reduce">Reduce</option>
+                            <option value="no-preference">No Preference</option>
                         </select>
                     </div>
                     <div class="flex flex-col gap-2">
@@ -74,6 +76,7 @@ export function Html(serviceWorker = true) {
                                 class="dark:bg-gray-700 p-1 border border-gray-300 contrast-more:border-black dark:border-none contrast-more:dark:border-solid contrast-more:dark:border-white">
                             <option value="">System</option>
                             <option value="reduce">Reduce</option>
+                            <option value="no-preference">No Preference</option>
                         </select>
                     </div>
                     <div class="flex justify-around">
