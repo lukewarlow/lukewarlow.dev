@@ -12,7 +12,7 @@
   "dependencies": {
     "swtl": "^0.2.1",
     "tailwindcss": "3.4.1",
-    "wc-horizontal-scroller": "0.5.0"
+    "wc-horizontal-scroller": "0.6.0"
   },
   "devDependencies": {
     "caniuse-lite": "^1.0.30001582",

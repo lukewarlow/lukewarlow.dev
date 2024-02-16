@@ -562,7 +562,7 @@ export function Html(serviceWorker = true) {
                         </div>
                     </section>
 
-                    <div class="hidden sm:flex md:hidden h-0" style="flex-basis: 100%;"></div>
+                    <div class="hidden sm:flex md:hidden h-0 basis-full"></div>
                     <section aria-labelledby="libraries"
                              class="bg-white dark:bg-gray-800 dark:contrast-more:bg-gray-900 dark:text-white contrast-more:border border-black dark:border-white rounded overflow-hidden p-3 lg:p-4 shadow-md dark:shadow-2xl inverted-colors:shadow-none flex-1">
                         <header class="flex mb-3 gap-2">
